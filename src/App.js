@@ -1,5 +1,8 @@
+import {useState} from 'react'
+import { supabase } from './supabaseClient'
 import logo from './logo.svg';
 import './App.css';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 const data = {
   first: "Aidan",
@@ -94,6 +97,36 @@ function Classes() {
   );
 }
 
+function Library() {
+  const [myBooks, setMyBooks] = useState([]);
+  async function getBooks() {
+    let { data: books, error } = await supabase
+      .from('books')
+      .select('*')
+    setMyBooks(books);
+  }
+  getBooks();
+
+  return (
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+      </tr>
+    {
+      myBooks == null ? <></> :
+      myBooks.map(b => (
+        <tr>
+          <td>{b.title}</td>
+          <td>{b.author}</td>
+          <td>{b.isbn}</td>
+        </tr>
+      ))
+    }
+    </table>
+  )
+}
 
 function App() {
   return (
@@ -102,6 +135,7 @@ function App() {
         <Person/>
         <Games/>
         <Classes/>
+        {/* <Library/> */}
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
