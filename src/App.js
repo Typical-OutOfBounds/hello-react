@@ -2,7 +2,6 @@ import {useState} from 'react'
 import { supabase } from './supabaseClient'
 import logo from './logo.svg';
 import './App.css';
-import { SupabaseClient } from '@supabase/supabase-js';
 
 const data = {
   first: "Aidan",
@@ -100,7 +99,7 @@ function Classes() {
 function Library() {
   const [myBooks, setMyBooks] = useState([]);
   async function getBooks() {
-    let { data: books, error } = await supabase
+    let { data: books } = await supabase
       .from('books')
       .select('*')
     setMyBooks(books);
