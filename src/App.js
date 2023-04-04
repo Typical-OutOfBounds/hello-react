@@ -108,7 +108,7 @@ function Library() {
   getBooks();
 
   return (
-    <table>
+    <table className="book-table">
       <tr>
         <th>Title</th>
         <th>Author</th>
@@ -135,7 +135,7 @@ function App() {
         <Person/>
         <Games/>
         <Classes/>
-        {/* <Library/> */}
+        <Library/>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.

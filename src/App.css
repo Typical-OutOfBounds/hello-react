@@ -24,6 +24,22 @@
   color: white;
 }
 
+table, th, td {
+  border: 1px solid;
+}
+
+th {
+  background-color: #61dafb;
+}
+
+td {
+  padding: 10px;
+}
+
+.book-table {
+  border-collapse: collapse;
+}
+
 .App-link {
   color: #61dafb;
 }
